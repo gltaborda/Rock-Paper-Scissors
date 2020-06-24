@@ -1,0 +1,104 @@
+<script>
+    let options = ["rock","paper","scissors"];
+
+    function computerPlay(){
+        let randomNumber = Math.floor(Math.random() * 3);
+        return options[randomNumber];
+    }
+
+    function playerPlay(){
+        return prompt("Type rock, paper or scissors to play");
+    }
+
+    function checkWinner(computerSelection,playerSelection){
+
+        let winnerString;
+        switch (true){
+            case (computerSelection == playerSelection):
+                winnerString = "It's a tie"
+                winner = ""
+                break;
+            case (computerSelection == "rock" && playerSelection == "paper"):
+                winnerString = `Player wins. ${playerSelection} beats ${computerSelection}`;
+                winner = "Player"
+                break;
+            case (computerSelection == "paper" && playerSelection == "scissors"):
+                winnerString = `Player wins. ${playerSelection} beats ${computerSelection}`;
+                winner = "Player"
+                break;
+            case (computerSelection == "scissors" && playerSelection == "rock"):
+                winnerString = `Player wins. ${playerSelection} beats ${computerSelection}`;
+                winner = "Player"
+                break;
+            case (computerSelection == "scissors" && playerSelection == "paper"):
+                winnerString = `Computer wins. ${computerSelection} beats ${playerSelection}`;
+                winner = "Computer"
+                break;
+            case (computerSelection == "rock" && playerSelection == "scissors"):
+                winnerString = `Computer wins. ${computerSelection} beats ${playerSelection}`;
+                winner = "Computer"
+                break;
+            case (computerSelection == "paper" && playerSelection == "rock"):
+                winnerString = `Computer wins. ${computerSelection} beats ${playerSelection}`;
+                winner = "Computer"
+                break;
+        }
+
+        alert(winnerString);
+        
+        return winner;
+        
+    }
+
+
+    function playRound(){
+        let computerSelection = computerPlay();
+        let playerSelection = playerPlay().toLowerCase();
+        let winner = checkWinner(computerSelection,playerSelection);
+        
+        return winner;
+    }
+
+    function playGame() {
+        let playerScore = 0;
+        let computerScore = 0;
+        while ((playerScore < 3) && (computerScore < 3)){
+            let winner = playRound();
+            if (winner === "Player"){
+                playerScore++;
+            } else if (winner === "Computer"){
+                computerScore++;
+            }
+            console.log("Player: " + playerScore);
+            console.log("Computer: " + computerScore);
+        
+        }
+        
+        let gameWinner;
+        if (computerScore < playerScore){
+            gameWinner = "Player";
+        } else {
+            gameWinner = "Computer";
+        }
+
+        alert (`The winner is ${gameWinner}`);
+    }
+
+    playGame();
+
+</script>
+
+<body></body>
+
+
+<!--
+ switch (winner) {
+    case "Player":
+    playerScore++;
+    break;
+case "Computer":
+    computerScore++;
+    break;
+default:
+    break;
+    -->
